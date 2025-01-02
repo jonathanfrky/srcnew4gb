@@ -34,8 +34,8 @@ async def set(_, message):
         BotCommand("qulflash", "🔒 Kanalingizni saqlab olishdan himoyalash"),
         BotCommand("broadcast", "⚡ Foydalanuvchilarga xabar yuborish"),
         BotCommand("yordam", "❓ Yordam kerak bo'lsa!"),
-        BotCommand("adl", "👻 30+ saytlardan audio yuklab olish"),
-        BotCommand("dl", "💀 30+ saytlardan video yuklab olish")
+        BotCommand("dl", "💀 30+ saytlardan video yuklab olish"),
+        BotCommand("adl", "👻 30+ saytlardan audio yuklab olish")
         
     ])
     
@@ -67,7 +67,7 @@ help_pages = [
         "> Akkauntingizdan chiqish\n\n"
     ),
     (
-        "📝 **Bot Commands Overview (2/2)**:\n\n"
+        "📝 **Bot buyruqlari haqida umumiy ma'lumot (2/2)**:\n\n"
         "10. **/ommaviy**\n"
         "> Bir vaqtda ketma ket postlarni yuklab olish (max 30 limit))\n\n"
         "11. **/stats**\n"
