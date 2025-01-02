@@ -18,26 +18,26 @@ async def set(_, message):
     # Setting all the bot commands
     await app.set_bot_commands([
         BotCommand("start", "🚀 Start the bot"),
-        BotCommand("batch", "🫠 Extract in bulk"),
-        BotCommand("login", "🔑 Get into the bot"),
-        BotCommand("logout", "🚪 Get out of the bot"),
+        BotCommand("ommaviy", "🫠 Extract in bulk"),
+        BotCommand("kirish", "🔑 Get into the bot"),
+        BotCommand("chiqish", "🚪 Get out of the bot"),
         BotCommand("token", "🎲 Get 3 hours free access"),
         BotCommand("adl", "👻 Download audio from 30+ sites"),
         BotCommand("dl", "💀 Download videos from 30+ sites"),
-        BotCommand("transfer", "💘 Gift premium to others"),
-        BotCommand("myplan", "⌛ Get your plan details"),
+        BotCommand("sovga", "💘 Gift premium to others"),
+        BotCommand("rejam", "⌛ Get your plan details"),
         BotCommand("add", "➕ Add user to premium"),
         BotCommand("rem", "➖ Remove from premium"),
-        BotCommand("settings", "⚙️ Personalize things"),
+        BotCommand("sozlama", "⚙️ Personalize things"),
         BotCommand("stats", "📊 Get stats of the bot"),
-        BotCommand("plan", "🗓️ Check our premium plans"),
-        BotCommand("terms", "🥺 Terms and conditions"),
+        BotCommand("rejalar", "🗓️ Check our premium plans"),
+        BotCommand("shartlar", "🥺 Terms and conditions"),
         BotCommand("speedtest", "🚅 Speed of server"),
         BotCommand("get", "🗄️ Get all user IDs"),
-        BotCommand("lock", "🔒 Protect channel from extraction"),
-        BotCommand("gcast", "⚡ Broadcast message to bot users"),
-        BotCommand("help", "❓ If you're a noob, still!"),
-        BotCommand("cancel", "🚫 Cancel batch process")
+        BotCommand("qulflash", "🔒 Protect channel from extraction"),
+        BotCommand("broadcast", "⚡ Broadcast message to bot users"),
+        BotCommand("yordam", "❓ If you're a noob, still!"),
+        BotCommand("bekor", "🚫 Cancel batch process")
     ])
     
     await message.reply("✅ Commands configured successfully!")
@@ -102,8 +102,8 @@ async def send_or_edit_help_page(_, message, page_number):
         return
 
     # Define the navigation buttons (previous, next)
-    prev_button = InlineKeyboardButton("◀️ Previous", callback_data=f"help_prev_{page_number}")
-    next_button = InlineKeyboardButton("Next ▶️", callback_data=f"help_next_{page_number}")
+    prev_button = InlineKeyboardButton("◀️ Oldingi", callback_data=f"help_prev_{page_number}")
+    next_button = InlineKeyboardButton("Keyingi ▶️", callback_data=f"help_next_{page_number}")
 
     # Add buttons conditionally
     buttons = []
@@ -125,7 +125,7 @@ async def send_or_edit_help_page(_, message, page_number):
     )
 
 # Start command with help navigation
-@app.on_message(filters.command("help"))
+@app.on_message(filters.command("yordam"))
 async def help(client, message):
     join = await subscribe(client, message)
     if join == 1:
@@ -154,7 +154,7 @@ async def on_help_navigation(client, callback_query):
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-@app.on_message(filters.command("terms") & filters.private)
+@app.on_message(filters.command("shartlar") & filters.private)
 async def terms(client, message):
     terms_text = (
         "📜 **Terms and Conditions** 📜\n\n"
@@ -165,14 +165,14 @@ async def terms(client, message):
     # Buttons for "See Plans" and "Contact"
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📋 See Plans", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("📋 Ta'riflar ko'rish", callback_data="see_plan")],
+            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/kingofpatal")],
         ]
     )
     await message.reply_text(terms_text, reply_markup=buttons)
 
 
-@app.on_message(filters.command("plan") & filters.private)
+@app.on_message(filters.command("rejalar") & filters.private)
 async def plan(client, message):
     plan_text = (
         "💰 **Premium Price**: Starting from $2 or 200 INR accepted via **__Amazon Gift Card__** (terms and conditions apply).\n"
