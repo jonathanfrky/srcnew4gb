@@ -37,7 +37,7 @@ def thumbnail(sender):
 # --------------------------- MONGO ---------
 
 # MongoDB database name and collection name
-DB_NAME = "smart_users"
+DB_NAME = "srcnew"
 COLLECTION_NAME = "super_user"
 
 VIDEO_EXTENSIONS = ['mp4', 'mov', 'avi', 'mkv', 'flv', 'wmv', 'webm', 'mpg', 'mpeg', '3gp', 'ts', 'm4v', 'f4v', 'vob']
