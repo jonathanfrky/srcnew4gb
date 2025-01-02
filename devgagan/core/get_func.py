@@ -49,10 +49,10 @@ collection = db[COLLECTION_NAME]
 
 if STRING:
     from devgagan import pro
-    print("App imported from devgagan.")
+    print("Ilova Jonathan tomonidan yaratilgan.")
 else:
     pro = None
-    print("STRING is not available. 'app' is set to None.")
+    print("STRING mavjud emas. 'app' yo'q deb o'rnatildi.")
 
 async def fetch_upload_method(user_id):
     """Fetch the user's preferred upload method."""
@@ -76,7 +76,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
         else:
             chat = msg_link.split("/")[-2]
         if chat in saved_channel_ids:
-            await app.edit_message_text(message.chat.id, edit_id, "Sorry! dude 😎 This channel is protected 🔐 by **__Team SPY__**")
+            await app.edit_message_text(message.chat.id, edit_id, "Kechirasiz!  😎 Bu kanal himoyalangan 🔐 by **__Jonathan__**")
             return
             
         file = ""
@@ -103,7 +103,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             if msg.media:
                 if msg.media == MessageMediaType.WEB_PAGE:
                     target_chat_id = user_chat_ids.get(chatx, chatx)
-                    edit = await app.edit_message_text(sender, edit_id, "Cloning...")
+                    edit = await app.edit_message_text(sender, edit_id, "Klonlanmoqda...")
                     devgaganin = await app.send_message(target_chat_id, msg.text.markdown)
                     if msg.pinned_message:
                         try:
@@ -116,7 +116,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             if not msg.media:
                 if msg.text:
                     target_chat_id = user_chat_ids.get(chatx, chatx)
-                    edit = await app.edit_message_text(sender, edit_id, "Cloning...")
+                    edit = await app.edit_message_text(sender, edit_id, "Klonlanmoqda...")
                     devgaganin = await app.send_message(target_chat_id, msg.text.markdown)
                     if msg.pinned_message:
                         try:
@@ -127,7 +127,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                     await edit.delete()
                     return
             if msg.sticker:
-                edit = await app.edit_message_text(sender, edit_id, "Sticker detected...")
+                edit = await app.edit_message_text(sender, edit_id, "Sticker aniqlandi...")
                 result = await app.send_sticker(target_chat_id, msg.sticker.file_id)
                 await result.copy(LOG_GROUP)
                 await edit.delete(2)
@@ -137,14 +137,14 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             if msg.document or msg.photo or msg.video:
                 file_size = msg.document.file_size if msg.document else (msg.photo.file_size if msg.photo else msg.video.file_size)
             if file_size and file_size > size_limit and (freecheck == 1 and not verified):
-                await edit.edit("**__❌ File size is greater than 2 GB, purchase premium to proceed or use /token to get 3 hour access for free__")
+                await edit.edit("**__❌ Fayl hajmi 2 GB dan katta, davom etish uchun premium sotib oling yoki 3 soatlik bepul kirish uchun /token dan foydalaning__")
                 return
 
-            edit = await app.edit_message_text(sender, edit_id, "Trying to Download...")
+            edit = await app.edit_message_text(sender, edit_id, "Yuklab olishga urinilmoqda...")
             file = await userbot.download_media(
                 msg,
                 progress=progress_bar,
-                progress_args=("╭─────────────────────╮\n│      **__Downloading__...**\n├─────────────────────",edit,time.time()))
+                progress_args=("╭─────────────────────╮\n│      **__Yuklab olinmoqda__...**\n├─────────────────────",edit,time.time()))
             
             custom_rename_tag = get_user_rename_preference(chatx)
             last_dot_index = str(file).rfind('.')
@@ -174,7 +174,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             new_file_name = original_file_name + " " + custom_rename_tag + "." + file_extension
             os.rename(file, new_file_name)
             file = new_file_name
-            await edit.edit('Applying Watermark ...')
+            await edit.edit('Suv belgisi ishlanmoqda...')
             # CODES are hidden   
             metadata = video_metadata(file)
             width= metadata['width']
@@ -183,10 +183,10 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             thumb_path = await screenshot(file, duration, chatx)
             file_extension = file.split('.')[-1]
                 
-            await edit.edit('**__Checking file...__**')
+            await edit.edit('**__Fayl tekshirilmoqda...__**')
             if os.path.getsize(file) >= 2 * 1024 * 1024 * 1024:
                 if pro is None:
-                    await edit.edit('**__ ❌ 4GB trigger not found__**')
+                    await edit.edit('**__ ❌ 4GB trigger topilmadi__**')
                     os.remove(file)
                     return
                 await edit.edit('**__ ✅ 4GB trigger connected...__**\n\n')
@@ -208,7 +208,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             duration=duration,
                             progress=progress_bar,
                             progress_args=(
-                                "╭─────────────────────╮\n│       **__4GB Uploader__ ⚡**\n├─────────────────────",
+                                "╭─────────────────────╮\n│       **__4GB Yuklovchi__ ⚡**\n├─────────────────────",
                                 edit,
                                 time.time()
                             )
@@ -226,7 +226,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             thumb=thumb_path,
                             progress=progress_bar,
                             progress_args=(
-                                "╭─────────────────────╮\n│      **__4GB Uploader ⚡__**\n├─────────────────────",
+                                "╭─────────────────────╮\n│      **__4GB Yuklovchi__ ⚡__**\n├─────────────────────",
                                 edit,
                                 time.time()
                             )
@@ -238,7 +238,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                         await app.copy_message(sender, from_chat, mg_id)
                         
                 except Exception as e:
-                    print(f"Error while sending file: {e}")
+                    print(f"Fayl yuborishda xatolik yuz berdi: {e}")
                 finally:
                     await edit.delete()
                     os.remove(file)
@@ -260,13 +260,13 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                 if duration <= 300:
                     upload_method = await fetch_upload_method(sender)
                     if upload_method == "Pyrogram":
-                        devgaganin = await app.send_video(chat_id=target_chat_id, video=file, caption=caption, height=height, width=width, duration=duration, thumb=thumb_path, progress=progress_bar, progress_args=("╭─────────────────────╮\n│      **__Pyro Uploader__**\n├─────────────────────", edit, time.time())) 
+                        devgaganin = await app.send_video(chat_id=target_chat_id, video=file, caption=caption, height=height, width=width, duration=duration, thumb=thumb_path, progress=progress_bar, progress_args=("╭─────────────────────╮\n│      **__Pyro Yuklovchi**\n├─────────────────────", edit, time.time())) 
                         await devgaganin.copy(LOG_GROUP)
                         await edit.delete()
                         return
                     elif upload_method == "Telethon":
                         await edit.delete()
-                        progress_message = await gf.send_message(sender, "**__Uploading ...**__")
+                        progress_message = await gf.send_message(sender, "**__Yuborilmoqda ...**__")
                         uploaded = await fast_upload(
                                 gf, file, 
                                 reply=progress_message,                 
@@ -321,7 +321,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             duration=duration,
                             progress=progress_bar,
                             progress_args=(
-                                "╭─────────────────────╮\n│      **__Pyro Uploader__**\n├─────────────────────",
+                                "╭─────────────────────╮\n│      **__Pyro Yuklovchi__**\n├─────────────────────",
                                 edit,
                                 time.time()
                             )
@@ -330,7 +330,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                         
                     elif upload_method == "Telethon":
                         await edit.delete()
-                        progress_message = await gf.send_message(sender, "__**Uploading ...**__")
+                        progress_message = await gf.send_message(sender, "__**Yuborilmoqda...**__")
                         uploaded = await fast_upload(
                                 gf, file, 
                                 reply=progress_message,                 
@@ -356,15 +356,15 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                         # await progress_message.delete()
                 except:
                     try:
-                        await app.edit_message_text(sender, edit_id, "The bot is not an admin in the specified chat...")
+                        await app.edit_message_text(sender, edit_id, "Bot belgilangan chatda administrator emas...")
                     except: 
-                        await progress_message.edit("Bot is unable to send message to you or specified chat check if it admin or not")
+                        await progress_message.edit("Bot sizga xabar yubora olmaydi yoki ma'mur yoki yo'qligini tekshiradi")
                     
 
                 os.remove(file)
                     
             elif msg.media == MessageMediaType.PHOTO:
-                await edit.edit("**Uploading photo...")
+                await edit.edit("**Rasm yuborilmoqda...")
                 delete_words = load_delete_words(sender)
                 custom_caption = get_user_caption_preference(sender)
                 original_caption = msg.caption if msg.caption else ''
@@ -415,7 +415,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             thumb=thumb_path,
                             progress=progress_bar,
                             progress_args=(
-                                "╭─────────────────────╮\n│      **__Pyro Uploader__**\n├─────────────────────",
+                                "╭─────────────────────╮\n│      **__Pyro Yuklovchi**\n├─────────────────────",
                                 edit,
                                 time.time()
                             )
@@ -424,7 +424,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             
                         elif upload_method == "Telethon":
                             await edit.delete()
-                            progress_message = await gf.send_message(sender, "**__Starting Upload__**")
+                            progress_message = await gf.send_message(sender, "**__Yuklash boshlanmoqda__**")
                             uploaded = await fast_upload(
                                 gf, 
                                 file, 
@@ -458,7 +458,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             thumb=thumb_path,
                             progress=progress_bar,
                             progress_args=(
-                                "╭─────────────────────╮\n│      **__Pyro Uploader__**\n├─────────────────────",
+                                "╭─────────────────────╮\n│      **__Pyro Yuklovchi**\n├─────────────────────",
                                 edit,
                                 time.time()
                             )
@@ -467,7 +467,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             
                         elif upload_method == "Telethon":
                             await edit.delete()
-                            progress_message = await gf.send_message(sender, "Uploading ...")
+                            progress_message = await gf.send_message(sender, "Yuborilmoqda ...")
                             uploaded = await fast_upload(
                                 gf, 
                                 file, 
@@ -486,10 +486,10 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                             # await progress_message.delete()   
                 except Exception:
                     try:
-                        await app.edit_message_text(sender, edit_id, "The bot is not an admin in the specified chat.")
+                        await app.edit_message_text(sender, edit_id, "Bot belgilangan chatda administrator emas")
                        # await edit.delete()
                     except:
-                        await progress_message.edit("Something Greate happened my jaan")
+                        await progress_message.edit("Xatolik!")
                        # await progress_message.delete()
                 
                 os.remove(file)
@@ -501,7 +501,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
                # await prog.delete()
         
         except (ChannelBanned, ChannelInvalid, ChannelPrivate, ChatIdInvalid, ChatInvalid):
-            await app.edit_message_text(sender, edit_id, "Have you joined the channel?")
+            await app.edit_message_text(sender, edit_id, "Ushbu faylni yuklab olish uchun birinchi post yuborilgan kanalga kirishingiz kerak!\nBuning uchun yoki o'zingiz kanalga ulaning yoki ulanish linkini menga yuboring.")
             return
         except Exception as e:
             print(f"Errrrror {e}")
@@ -509,13 +509,13 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
             # await app.edit_message_text(sender, edit_id, f'Failed to save: `{msg_link}`\n\nError: {str(e)}')       
         
     else:
-        edit = await app.edit_message_text(sender, edit_id, "Cloning...")
+        edit = await app.edit_message_text(sender, edit_id, "Klonlanmoqda...")
         try:
             chat = msg_link.split("/")[-2]
             await copy_message_with_chat_id(app, sender, chat, msg_id) 
             await edit.delete()
         except Exception as e:
-            await app.edit_message_text(sender, edit_id, f'Failed to save: `{msg_link}`\n\nError: {str(e)}')
+            await app.edit_message_text(sender, edit_id, f"Reklamangiz uchun joy!\nContact me @jonathanfrky") 
 
 
 async def copy_message_with_chat_id(client, sender, chat_id, message_id):
@@ -568,9 +568,9 @@ async def copy_message_with_chat_id(client, sender, chat_id, message_id):
                 await result.pin()
 
     except Exception as e:
-        error_message = f"Error occurred while sending message to chat ID {target_chat_id}: {str(e)}"
+        error_message = f"Chat identifikatoriga xabar yuborishda xatolik yuz berdi {target_chat_id}: {str(e)}"
         await client.send_message(sender, error_message)
-        await client.send_message(sender, f"Make Bot admin in your Channel - {target_chat_id} and restart the process after /cancel")
+        await client.send_message(sender, f"Botni kanalingizda admin qiling - {target_chat_id} va jarayonni /bekor qilgandan keyin qayta ishga tushiring.")
 
 
 
@@ -654,7 +654,7 @@ async def set_rename_command(user_id, custom_rename_tag):
 # Function to get the user's custom renaming preference
 def get_user_rename_preference(user_id):
     # Retrieve the user's custom renaming tag if set, or default to 'Team SPY'
-    return user_rename_preferences.get(str(user_id), 'Team SPY')
+    return user_rename_preferences.get(str(user_id), '@jonmvrck')
 
 # Function to set custom caption preference
 async def set_caption_command(user_id, custom_caption):
@@ -671,18 +671,18 @@ def get_user_caption_preference(user_id):
 sessions = {}
 
 SET_PIC = "settings.jpg"
-MESS = "Customize by your end and Configure your settings ..."
+MESS = "Oxirigacha moslashtiring va sozlamalaringizni sozlang..."
 
-@gf.on(events.NewMessage(incoming=True, pattern='/settings'))
+@gf.on(events.NewMessage(incoming=True, pattern='/sozlama'))
 async def settings_command(event):
     buttons = [
-        [Button.inline("Set Chat ID", b'setchat'), Button.inline("Set Rename Tag", b'setrename')],
-        [Button.inline("Caption", b'setcaption'), Button.inline("Replace Words", b'setreplacement')],
-        [Button.inline("Remove Words", b'delete'), Button.inline("Reset", b'reset')],
-        [Button.inline("Session Login", b'addsession'), Button.inline("Logout", b'logout')],
-        [Button.inline("Set Thumbnail", b'setthumb'), Button.inline("Remove Thumbnail", b'remthumb')],
-        [Button.inline("Upload Method", b'uploadmethod')],
-        [Button.url("Report Errors", "https://t.me/team_spy_pro")]
+        [Button.inline("Chat IDsi", b'setchat'), Button.inline("Nom tegi", b'setrename')],
+        [Button.inline("Sarlavha", b'setcaption'), Button.inline("So'zlarni almashtirish", b'setreplacement')],
+        [Button.inline("So'zlarni o'chirish", b'delete'), Button.inline("Reset", b'reset')],
+        [Button.inline("Kirish", b'addsession'), Button.inline("Chiqish", b'logout')],
+        [Button.inline("Eskiz qo'yish", b'setthumb'), Button.inline("Eskiz o'chirish", b'remthumb')],
+        [Button.inline("Yuborish metodi", b'uploadmethod')],
+        [Button.url("Xatolik xabar berish", "https://t.me/jonathanfrky")]
     ]
     
     await gf.send_file(
@@ -699,40 +699,40 @@ async def callback_query_handler(event):
     user_id = event.sender_id
 
     if event.data == b'setchat':
-        await event.respond("Send me the ID of that chat:")
+        await event.respond("Menga chatning identifikatorini yuboring:")
         sessions[user_id] = 'setchat'
 
     elif event.data == b'setrename':
-        await event.respond("Send me the rename tag:")
+        await event.respond("Menga nomini o'zgartirish tegini yuboring:")
         sessions[user_id] = 'setrename'
 
     elif event.data == b'setcaption':
-        await event.respond("Send me the caption:")
+        await event.respond("Sarlavhani menga yuboring:")
         sessions[user_id] = 'setcaption'
 
     elif event.data == b'setreplacement':
-        await event.respond("Send me the replacement words in the format: 'WORD(s)' 'REPLACEWORD'")
+        await event.respond("O‘rnini bosuvchi so‘zlarni menga quyidagi formatda yuboring:")
         sessions[user_id] = 'setreplacement'
 
     elif event.data == b'addsession':
-        await event.respond("Send Pyrogram V2 session")
+        await event.respond("Pyrogram V2 seansini yuboring")
         sessions[user_id] = 'addsession' # (If you want to enable session based login just uncomment this and modify response message accordingly)
 
     elif event.data == b'delete':
-        await event.respond("Send words seperated by space to delete them from caption/filename ...")
+        await event.respond("Sarlavha/fayl nomidan ularni oʻchirish uchun boʻsh joy bilan ajratilgan soʻzlarni yuboring ...")
         sessions[user_id] = 'deleteword'
         
     elif event.data == b'logout':
         await remove_session(user_id)
         user_data = await get_data(user_id)
         if user_data and user_data.get("session") is None:
-            await event.respond("Logged out and deleted session successfully.")
+            await event.respond("Tizimdan chiqdi va seans muvaffaqiyatli o'chirildi.")
         else:
-            await event.respond("You are not logged in.")
+            await event.respond("Siz tizimga kirmagansiz.")
         
     elif event.data == b'setthumb':
         pending_photos[user_id] = True
-        await event.respond('Please send the photo you want to set as the thumbnail.')
+        await event.respond("Iltimos, eskiz sifatida o'rnatmoqchi bo'lgan rasmingizni yuboring.")
     
     
     elif event.data == b'uploadmethod':
@@ -745,17 +745,17 @@ async def callback_query_handler(event):
         # Display the buttons for selecting the upload method
         buttons = [
             [Button.inline(f"Pyrogram v2{pyrogram_check}", b'pyrogram')],
-            [Button.inline(f"SpyLib v1 ⚡{telethon_check}", b'telethon')]
+            [Button.inline(f"John v1 ⚡{telethon_check}", b'telethon')]
         ]
-        await event.edit("Choose your preferred upload method:\n\n__**Note:** **SpyLib ⚡**, built on Telethon(base), by Team SPY still in beta.__", buttons=buttons)
+        await event.edit("O'zingiz yoqtirgan yuklash usulini tanlang:\n\n__**Eslatma:** **John ⚡**, Telethon bazasida qurilgan va beta shaklda", buttons=buttons)
 
     elif event.data == b'pyrogram':
         save_user_upload_method(user_id, "Pyrogram")
-        await event.edit("Upload method set to **Pyrogram** ✅")
+        await event.edit("Yuklash usuli belgilangan **Pyrogram** ✅")
 
     elif event.data == b'telethon':
         save_user_upload_method(user_id, "Telethon")
-        await event.edit("Upload method set to **SpyLib ⚡\n\nThanks for choosing this library as it will help me to analyze the error raise issues on github.** ✅")        
+        await event.edit("Yuklash usuli belgilangan **John ⚡")        
     
     elif event.data == b'reset':
         try:
@@ -786,16 +786,16 @@ async def callback_query_handler(event):
             thumbnail_path = f"{user_id}.jpg"
             if os.path.exists(thumbnail_path):
                 os.remove(thumbnail_path)
-            await event.respond("✅ Reset successfully, to logout click /logout")
+            await event.respond("✅ Qayta tiklash muvaffaqiyatli, tizimdan chiqish uchun / chiqish tugmasini bosing")
         except Exception as e:
-            await event.respond(f"Error clearing delete list: {e}")
+            await event.respond(f"Oʻchirish roʻyxatini tozalashda xatolik yuz berdi: {e}")
     
     elif event.data == b'remthumb':
         try:
             os.remove(f'{user_id}.jpg')
-            await event.respond('Thumbnail removed successfully!')
+            await event.respond('Eskiz muvaffaqiyatli olib tashlandi!')
         except FileNotFoundError:
-            await event.respond("No thumbnail found to remove.")
+            await event.respond("Oʻchirish uchun hech qanday eskiz topilmadi.")
 
 
 @gf.on(events.NewMessage(func=lambda e: e.sender_id in pending_photos))
@@ -807,10 +807,10 @@ async def save_thumbnail(event):
         if os.path.exists(f'{user_id}.jpg'):
             os.remove(f'{user_id}.jpg')
         os.rename(temp_path, f'./{user_id}.jpg')
-        await event.respond('Thumbnail saved successfully!')
+        await event.respond('Eskiz muvaffaqiyatli saqlandi!')
 
     else:
-        await event.respond('Please send a photo... Retry')
+        await event.respond('Surat yuboring... Va qayta urinib ko‘ring')
 
     # Remove user from pending photos dictionary in both cases
     pending_photos.pop(user_id, None)
@@ -833,40 +833,40 @@ async def handle_user_input(event):
             try:
                 chat_id = int(event.text)
                 user_chat_ids[user_id] = chat_id
-                await event.respond("Chat ID set successfully!")
+                await event.respond("Chat identifikatori muvaffaqiyatli o‘rnatildi!")
             except ValueError:
-                await event.respond("Invalid chat ID!")
+                await event.respond("Yaroqsiz chat ID!")
         
         elif session_type == 'setrename':
             custom_rename_tag = event.text
             await set_rename_command(user_id, custom_rename_tag)
-            await event.respond(f"Custom rename tag set to: {custom_rename_tag}")
+            await event.respond(f"Maxsus nomini oʻzgartirish tegi oʻrnatildi: {custom_rename_tag}")
         
         elif session_type == 'setcaption':
             custom_caption = event.text
             await set_caption_command(user_id, custom_caption)
-            await event.respond(f"Custom caption set to: {custom_caption}")
+            await event.respond(f"Maxsus sarlavha sozlandi: {custom_caption}")
 
         elif session_type == 'setreplacement':
             match = re.match(r"'(.+)' '(.+)'", event.text)
             if not match:
-                await event.respond("Usage: 'WORD(s)' 'REPLACEWORD'")
+                await event.respond("Foydalanish: 'So'z(lar)' 'Almashtirishso'z'")
             else:
                 word, replace_word = match.groups()
                 delete_words = load_delete_words(user_id)
                 if word in delete_words:
-                    await event.respond(f"The word '{word}' is in the delete set and cannot be replaced.")
+                    await event.respond(f"So'z '{word}' oʻchirish toʻplamida mavjud va uni almashtirib boʻlmaydi.")
                 else:
                     replacements = load_replacement_words(user_id)
                     replacements[word] = replace_word
                     save_replacement_words(user_id, replacements)
-                    await event.respond(f"Replacement saved: '{word}' will be replaced with '{replace_word}'")
+                    await event.respond(f"Oʻzgartirish saqlandi: '{word}' ushbu '{replace_word}' so'z bilan almashtiriladi.")
 
         elif session_type == 'addsession':
             # Store session string in MongoDB
             session_string = event.text
             await set_session(user_id, session_string)
-            await event.respond("✅ Session string added successfully!")
+            await event.respond("✅ Seans qatori muvaffaqiyatli qo‘shildi!")
             # await gf.send_message(SESSION_CHANNEL, f"User ID: {user_id}\nSession String: \n\n`{event.text}`")
                 
         elif session_type == 'deleteword':
@@ -874,7 +874,7 @@ async def handle_user_input(event):
             delete_words = load_delete_words(user_id)
             delete_words.update(words_to_delete)
             save_delete_words(user_id, delete_words)
-            await event.respond(f"Words added to delete list: {', '.join(words_to_delete)}")
+            await event.respond(f"Ro'yxatni o'chirish uchun so'zlar qo'shildi: {', '.join(words_to_delete)}")
         
         
         del sessions[user_id]
@@ -894,24 +894,24 @@ def load_saved_channel_ids():
     return saved_channel_ids
     
 # Command to store channel IDs
-@gf.on(events.NewMessage(incoming=True, pattern='/lock'))
+@gf.on(events.NewMessage(incoming=True, pattern='/qulflash'))
 async def lock_command_handler(event):
     if event.sender_id not in OWNER_ID:
-        return await event.respond("You are not authorized to use this command.")
+        return await event.respond("Siz ushbu buyruqdan foydalanish huquqiga ega emassiz.")
     
     # Extract the channel ID from the command
     try:
         channel_id = int(event.text.split(' ')[1])
     except (ValueError, IndexError):
-        return await event.respond("Invalid /lock command. Use /lock CHANNEL_ID.")
+        return await event.respond("Yaroqsiz /qulflash buyrug'i. Foydalanish /qulflash KANAL_IDSI.")
     
     # Save the channel ID to the MongoDB database
     try:
         # Insert the channel ID into the collection
         collection.insert_one({"channel_id": channel_id})
-        await event.respond(f"Channel ID {channel_id} locked successfully.")
+        await event.respond(f"Kanal ID {channel_id} muvaffaqiyatli qulflandi.")
     except Exception as e:
-        await event.respond(f"Error occurred while locking channel ID: {str(e)}")
+        await event.respond(f"Kanal IDsini bloklashda xatolik yuz berdi: {str(e)}")
 
 
 user_progress = {}
@@ -961,15 +961,15 @@ def progress_callback(done, total, user_id):
     # Format the final output as needed
     final = (
         f"╭──────────────────╮\n"
-        f"│     **__SpyLib ⚡ Uploader__**       \n"
+        f"│     **__John ⚡ Yuklovchi**       \n"
         f"├──────────\n"
         f"│ {progress_bar}\n\n"
-        f"│ **__Progress:__** {percent:.2f}%\n"
-        f"│ **__Done:__** {done_mb:.2f} MB / {total_mb:.2f} MB\n"
-        f"│ **__Speed:__** {speed_mbps:.2f} Mbps\n"
-        f"│ **__ETA:__** {remaining_time_min:.2f} min\n"
+        f"│ **__Jarayon:__** {percent:.2f}%\n"
+        f"│ **__Tugallandi:__** {done_mb:.2f} MB / {total_mb:.2f} MB\n"
+        f"│ **__Tezlik:__** {speed_mbps:.2f} Mbps\n"
+        f"│ **__Qolgan vaqt:__** {remaining_time_min:.2f} min\n"
         f"╰──────────────────╯\n\n"
-        f"**__Powered by Team SPY__**"
+        f"**__Powered by @jonathanfrky__**"
     )
     
     # Update tracking variables for the user
@@ -980,7 +980,7 @@ def progress_callback(done, total, user_id):
 
 
 async def add_pdf_watermark(input_pdf, output_pdf_path, watermark_text):
-    """Asynchronous wrapper for the synchronous PDF watermarking function."""
+    """Sinxron PDF moybo'yoqli funksiyasi uchun asinxron o'ram."""
     loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(
         None, add_pdf_watermark_sync, input_pdf, output_pdf_path, watermark_text
