@@ -43,7 +43,7 @@ def get_readable_file_size(size_in_bytes) -> str:
 
 @gagan.on(events.NewMessage(incoming=True, pattern='/speedtest'))
 async def speedtest(event):
-    speed = await event.reply("Running Speed Test. Wait about some secs.")  #edit telethon
+    speed = await event.reply("Tezlik testi bajarilmoqda. Bir necha soniya kuting.")  #edit telethon
     test = Speedtest()
     test.get_best_server()
     test.download()
@@ -53,28 +53,28 @@ async def speedtest(event):
     path = (result['share'])
     currentTime = get_readable_time(time() - botStartTime)
     string_speed = f'''
-╭─《 🚀 SPEEDTEST INFO 》
-├ <b>Upload:</b> <code>{speed_convert(result['upload'], False)}</code>
-├ <b>Download:</b>  <code>{speed_convert(result['download'], False)}</code>
+╭─《 🚀 TEZLIK TEST MA'LUMOTI 》
+├ <b>Yuborish:</b> <code>{speed_convert(result['upload'], False)}</code>
+├ <b>Yuklab olish:</b>  <code>{speed_convert(result['download'], False)}</code>
 ├ <b>Ping:</b> <code>{result['ping']} ms</code>
-├ <b>Time:</b> <code>{result['timestamp']}</code>
-├ <b>Data Sent:</b> <code>{get_readable_file_size(int(result['bytes_sent']))}</code>
-╰ <b>Data Received:</b> <code>{get_readable_file_size(int(result['bytes_received']))}</code>
-╭─《 🌐 SPEEDTEST SERVER 》
-├ <b>Name:</b> <code>{result['server']['name']}</code>
-├ <b>Country:</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
+├ <b>Vaqt:</b> <code>{result['timestamp']}</code>
+├ <b>Yuborilgan ma'lumot:</b> <code>{get_readable_file_size(int(result['bytes_sent']))}</code>
+╰ <bQabul qilingan ma'lumot:</b> <code>{get_readable_file_size(int(result['bytes_received']))}</code>
+╭─《 🌐 TEZLIK TEST SERVERI 》
+├ <b>Nomi:</b> <code>{result['server']['name']}</code>
+├ <b>Mamlakat:</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
 ├ <b>Sponsor:</b> <code>{result['server']['sponsor']}</code>
-├ <b>Latency:</b> <code>{result['server']['latency']}</code>
-├ <b>Latitude:</b> <code>{result['server']['lat']}</code>
+├ <b>Kechikish:</b> <code>{result['server']['latency']}</code>
+├ <b>Kenglik:</b> <code>{result['server']['lat']}</code>
 ╰ <b>Longitude:</b> <code>{result['server']['lon']}</code>
-╭─《 👤 CLIENT DETAILS 》
+╭─《 👤 MIJOZ MA'LUMOTLARI 》
 ├ <b>IP Address:</b> <code>{result['client']['ip']}</code>
-├ <b>Latitude:</b> <code>{result['client']['lat']}</code>
-├ <b>Longitude:</b> <code>{result['client']['lon']}</code>
-├ <b>Country:</b> <code>{result['client']['country']}</code>
+├ <b>Kenglik:</b> <code>{result['client']['lat']}</code>
+├ <b>Uzunlik:</b> <code>{result['client']['lon']}</code>
+├ <b>Mamlakat:</b> <code>{result['client']['country']}</code>
 ├ <b>ISP:</b> <code>{result['client']['isp']}</code>
-├ <b>ISP Rating:</b> <code>{result['client']['isprating']}</code>
-╰ <b>Powered by Team SPY</b> 
+├ <b>ISP baholash:</b> <code>{result['client']['isprating']}</code>
+╰ <b>Powered by @jonathanfrky</b> 
 '''
     try:
         await event.reply(string_speed,file=path,parse_mode='html')
