@@ -13,17 +13,16 @@ from pyrogram.types import BotCommand, InlineKeyboardButton, InlineKeyboardMarku
 @app.on_message(filters.command("set"))
 async def set(_, message):
     if message.from_user.id not in OWNER_ID:
-        await message.reply("You are not authorized to use this command.")
+        await message.reply("Siz ushbu buyruqdan foydalanish huquqiga ega emassiz.")
         return
     # Setting all the bot commands
     await app.set_bot_commands([
         BotCommand("start", "🚀 Botni ishga tushirish"),
         BotCommand("kirish", "🔑 Akkauntingizga kirish"),
         BotCommand("chiqish", "🚪 Akkauntingizdan chiqish"),
+        BotCommand("ommaviy", "🫠 Ommaviy yuklab olish"), 
+        BotCommand("bekor", "🚫 Jarayonni bekor qilish"),
         BotCommand("token", "🎲 3 soat cheklovsiz foydalanish"),
-        BotCommand("ommaviy", "🫠 Ommaviy yuklab olish"),
-        #BotCommand("adl", "👻 Download audio from 30+ sites"),
-        #BotCommand("dl", "💀 Download videos from 30+ sites"),
         BotCommand("sovga", "💘 Premium sovg'a qilish"),
         BotCommand("rejam", "⌛ Ta'rifingiz haqida ma'lumot"),
         BotCommand("sozlamalar", "⚙️ Sozmalar sahifasi"),
@@ -35,7 +34,9 @@ async def set(_, message):
         BotCommand("qulflash", "🔒 Kanalingizni saqlab olishdan himoyalash"),
         BotCommand("broadcast", "⚡ Foydalanuvchilarga xabar yuborish"),
         BotCommand("yordam", "❓ Yordam kerak bo'lsa!"),
-        BotCommand("bekor", "🚫 Jarayonni bekor qilish")
+        BotCommand("adl", "👻 30+ saytlardan audio yuklab olish"),
+        BotCommand("dl", "💀 30+ saytlardan video yuklab olish")
+        
     ])
     
     await message.reply("✅ Buyruqlar muvaffaqqiyatli o'zgartiirildi!")
@@ -45,51 +46,51 @@ async def set(_, message):
 # Function to split and manage the help message in multiple parts
 help_pages = [
     (
-        "📝 **Bot Commands Overview (1/2)**:\n\n"
+        "📝 **Bot buyruqlari haqida umumiy ma'lumot (1/2)**:\n\n"
         "1. **/add userID**\n"
-        "> Add user to premium (Owner only)\n\n"
+        "> Foydalanuvchini premiumga qo‘shish (Faqat admin!)\n\n"
         "2. **/rem userID**\n"
-        "> Remove user from premium (Owner only)\n\n"
-        "3. **/transfer userID**\n"
-        "> Transfer premium to your beloved major purpose for resellers (Premium members only)\n\n"
+        "> Foydalanuvchini premiumdan olib tashlash (Faqat admin!)\n\n"
+        "3. **/sovga userID**\n"
+        "> Premiumingizni do'stingizga sovg'a qilish uchun. (Faqat Premiumlar)\n\n"
         "4. **/get**\n"
-        "> Get all user IDs (Owner only)\n\n"
-        "5. **/lock**\n"
-        "> Lock channel from extraction (Owner only)\n\n"
+        "> Barcha foydalanuvchilar IDsini olish (Faqat admin!)\n\n"
+        "5. **/qulflash**\n"
+        "> Kanaldan yuklashni cheklash (Faqat admin!)\n\n"
         "6. **/dl link**\n"
-        "> Download videos (Not available in v3 if you are using)\n\n"
+        "> Instagramdan video yuklab olish\n\n"
         "7. **/adl link**\n"
-        "> Download audio (Not available in v3 if you are using)\n\n"
-        "8. **/login**\n"
-        "> Log into the bot for private channel access\n\n"
-        "9. **/batch**\n"
-        "> Bulk extraction for posts (After login)\n\n"
+        "> Internetdan audio yuklab olish\n\n"
+        "8. **/kirish**\n"
+        "> Akkauntingizga kirish\n\n"
+        "9. **/chiqish**\n"
+        "> Akkauntingizdan chiqish\n\n"
     ),
     (
         "📝 **Bot Commands Overview (2/2)**:\n\n"
-        "10. **/logout**\n"
-        "> Logout from the bot\n\n"
+        "10. **/ommaviy**\n"
+        "> Bir vaqtda ketma ket postlarni yuklab olish (max 30 limit))\n\n"
         "11. **/stats**\n"
-        "> Get bot stats\n\n"
-        "12. **/plan**\n"
-        "> Check premium plans\n\n"
+        "> Bot statistikasi\n\n"
+        "12. **/rejalar**\n"
+        "> Premium rejalar\n\n"
         "13. **/speedtest**\n"
-        "> Test the server speed (not available in v3)\n\n"
-        "14. **/terms**\n"
-        "> Terms and conditions\n\n"
-        "15. **/cancel**\n"
-        "> Cancel ongoing batch process\n\n"
-        "16. **/myplan**\n"
-        "> Get details about your plans\n\n"
+        "> Server tezligini sinab ko'rish\n\n"
+        "14. **/shartlar**\n"
+        "> Foydalanish shartlari\n\n"
+        "15. **/bekor**\n"
+        "> Davom etayotgan ommaviy jarayonni bekor qiling\n\n"
+        "16. **/rejam**\n"
+        "> Ta'rif rejangiz haqida\n\n"
         "17. **/session**\n"
-        "> Generate Pyrogram V2 session\n\n"
-        "18. **/settings**\n"
-        "> 1. SETCHATID : To directly upload in channel or group or user's dm use it with -100[chatID]\n"
-        "> 2. SETRENAME : To add custom rename tag or username of your channels\n"
-        "> 3. CAPTION : To add custom caption\n"
-        "> 4. REPLACEWORDS : Can be used for words in deleted set via REMOVE WORDS\n"
-        "> 5. RESET : To set the things back to default\n\n"
-        "> You can set CUSTOM THUMBNAIL, PDF WATERMARK, VIDEO WATERMARK, SESSION-based login, etc. from settings\n\n"
+        "> Pyrogram V@ sessiya yaratish\n\n"
+        "18. **/sozlama**\n"
+        "> 1. CHATIDO'RNAT : To'g'ridan-to'g'ri kanalga yoki guruhga yoki foydalanuvchining dm-ga yuklash uchun -100[chatID] bilan foydalaning.\n"
+        "> 2. QAYTANOMO'RNAT : Kanallaringiz nomini o'zgartirish yorlig'i yoki foydalanuvchi nomini qo'shish uchun\n"
+        "> 3. SARLAVHA : Maxsus sarlavha qo'shish uchun\n"
+        "> 4. SO'ZALMASHTIR :O'chirilgan to'plamdagi so'zlar uchun ishlatilishi mumkin\n"
+        "> 5. QAYTATIKLA : Sozlamalarni asl holatiga qaytarish uchun\n\n"
+        "> Siz sozlamalardan MAXSUS eskizi, SESSION asosidagi login va hokazolarni o‘rnatishingiz mumkin.\n\n"
         "**__Powered by @jonathanfrky__**"
     )
 ]
@@ -155,11 +156,10 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 @app.on_message(filters.command("shartlar") & filters.private)
 async def terms(client, message):
     terms_text = (
-        "📜 **Terms and Conditions** 📜\n\n"
-        "✨ We are not responsible for user deeds, and we do not promote copyrighted content. If any user engages in such activities, it is solely their responsibility.\n"
-        "✨ Upon purchase, we do not guarantee the uptime, downtime, or the validity of the plan. __Authorization and banning of users are at our discretion; we reserve the right to ban or authorize users at any time.__\n"
-        "✨ Payment to us **__does not guarantee__** authorization for the /batch command. All decisions regarding authorization are made at our discretion and mood.\n"
-    )
+        "📜 **Foydalanish shartlari** 📜\n\n"
+        "✨ Biz foydalanuvchi xatti-harakatlari uchun javobgar emasmiz va mualliflik huquqi bilan himoyalangan kontentni targ'ib qilmaymiz. Agar biron bir foydalanuvchi bunday faoliyat bilan shug'ullansa, bu faqat o'zining javobgarligidir.\n"
+        "✨ Sotib olgach, biz ish vaqti, ishlamay qolish vaqti yoki rejaning amal qilishiga kafolat bermaymiz. __Foydalanuvchilarni avtorizatsiya qilish va taqiqlash bizning ixtiyorimizda; biz istalgan vaqtda foydalanuvchilarni taqiqlash yoki ruxsat berish huquqini saqlab qolamiz.__\n"
+ )
     # Buttons for "See Plans" and "Contact"
     buttons = InlineKeyboardMarkup(
         [
@@ -173,17 +173,17 @@ async def terms(client, message):
 @app.on_message(filters.command("rejalar") & filters.private)
 async def plan(client, message):
     plan_text = (
-        "💰 **Premium Price**: Starting from $2 or 200 INR accepted via **__Amazon Gift Card__** (terms and conditions apply).\n"
-        "📥 **Download Limit**: Users can download up to 100,000 files in a single batch command.\n"
-        "🛑 **Batch**: You will get two modes /bulk and /batch.\n"
-        "   - Users are advised to wait for the process to automatically cancel before proceeding with any downloads or uploads.\n\n"
-        "📜 **Terms and Conditions**: For further details and complete terms and conditions, please send /terms.\n"
+        "💰 **Premium narx**: Hozircha bepul, Zavqlaning)\n"
+        "📥 **Yuklab olish chegarasi**: Foydalanuvchilar bitta paketli buyruqda 100 000 tagacha faylni yuklab olishlari mumkin.\n"
+        "🛑 **To'plam**: Siz ikkita rejimga ega bo'lasiz /ommaviy va /toplam.\n"
+        " - Foydalanuvchilarga har qanday yuklab olish yoki yuklashni davom ettirishdan oldin jarayon avtomatik ravishda bekor qilinishini kutish tavsiya etiladi.\n\n"
+        "📜 **Shartlar va shartlar**: Batafsil ma'lumot va to'liq shartlar uchun /shartlar ni yuboring.\n"
     )
     # Buttons for "See Terms" and "Contact"
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
+            [InlineKeyboardButton("📜 Shartlarni ko'rish", callback_data="see_terms")],
+            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/jonathanfrky")],
         ]
     )
     await message.reply_text(plan_text, reply_markup=buttons)
@@ -192,17 +192,17 @@ async def plan(client, message):
 @app.on_callback_query(filters.regex("see_plan"))
 async def see_plan(client, callback_query):
     plan_text = (
-        "💰 **Premium Price**: Starting from $2 or 200 INR accepted via **__Amazon Gift Card__** (terms and conditions apply).\n"
-        "📥 **Download Limit**: Users can download up to 100,000 files in a single batch command.\n"
-        "🛑 **Batch**: You will get two modes /bulk and /batch.\n"
-        "   - Users are advised to wait for the process to automatically cancel before proceeding with any downloads or uploads.\n\n"
-        "📜 **Terms and Conditions**: For further details and complete terms and conditions, please send /terms or click See Terms👇\n"
+        "💰 **Premium narx**: Hozircha bepul, Zavqlaning)\n"
+        "📥 **Yuklab olish chegarasi**: Foydalanuvchilar bitta paketli buyruqda 100 000 tagacha faylni yuklab olishlari mumkin.\n"
+        "🛑 **To'plam**: Siz ikkita rejimga ega bo'lasiz /ommaviy va /toplam.\n"
+        " - Foydalanuvchilarga har qanday yuklab olish yoki yuklashni davom ettirishdan oldin jarayon avtomatik ravishda bekor qilinishini kutish tavsiya etiladi.\n\n"
+        "📜 **Shartlar va shartlar**: Batafsil ma'lumot va to'liq shartlar uchun /shartlar ni yuboring.\n"
     )
     # Buttons for "See Terms" and "Contact"
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
+            [InlineKeyboardButton("📜 Shartlarni ko'rish", callback_data="see_terms")],
+            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/jonathanfrky")],
         ]
     )
     await callback_query.message.edit_text(plan_text, reply_markup=buttons)
@@ -211,16 +211,15 @@ async def see_plan(client, callback_query):
 @app.on_callback_query(filters.regex("see_terms"))
 async def see_terms(client, callback_query):
     terms_text = (
-        "📜 **Terms and Conditions** 📜\n\n"
-        "✨ We are not responsible for user deeds, and we do not promote copyrighted content. If any user engages in such activities, it is solely their responsibility.\n"
-        "✨ Upon purchase, we do not guarantee the uptime, downtime, or the validity of the plan. __Authorization and banning of users are at our discretion; we reserve the right to ban or authorize users at any time.__\n"
-        "✨ Payment to us **__does not guarantee__** authorization for the /batch command. All decisions regarding authorization are made at our discretion and mood.\n"
-    )
+        "📜 **Foydalanish shartlari** 📜\n\n"
+        "✨ Biz foydalanuvchi xatti-harakatlari uchun javobgar emasmiz va mualliflik huquqi bilan himoyalangan kontentni targ'ib qilmaymiz. Agar biron bir foydalanuvchi bunday faoliyat bilan shug'ullansa, bu faqat o'zining javobgarligidir.\n"
+        "✨ Sotib olgach, biz ish vaqti, ishlamay qolish vaqti yoki rejaning amal qilishiga kafolat bermaymiz. __Foydalanuvchilarni avtorizatsiya qilish va taqiqlash bizning ixtiyorimizda; biz istalgan vaqtda foydalanuvchilarni taqiqlash yoki ruxsat berish huquqini saqlab qolamiz.__\n"
+ )
     # Buttons for "See Plans" and "Contact"
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("📋 See Plans", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
+           [InlineKeyboardButton("📜 Shartlarni ko'rish", callback_data="see_terms")],
+            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/jonathanfrky")],
         ]
     )
     await callback_query.message.edit_text(terms_text, reply_markup=buttons)
