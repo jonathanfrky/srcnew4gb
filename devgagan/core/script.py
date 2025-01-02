@@ -3,81 +3,77 @@
 # ------------------------------------------------------------ #
 
 START_TXT = """
-Hi, welcome to Advance Content Saver Bot, designed to save restricted messages from public/private channels and private groups. First login in bot by /login then send post link.
+Salom {}, ommaviy/shaxsiy kanallardan cheklangan xabarlarni saqlash uchun moʻljallangan botga xush kelibsiz.
+Avval /kirish orqali botga kiring, keyin post havolasini yuboring.\n\nDiqqat ushbu botdagi barcha harakatlaringizga o'zingiz javob berasiz! Botni keyinchalik ishlatish mobaynida ushbu qoidaga rozi ekanligingizni bildirasiz!
 """
 
 FORCE_MSG = """
-Hey {},
+Salom {},
 
-According to my database, you've not joined the updates channel yet. If you want to use me, then join the updates channel and start me again!
+Ba'zi sabalarga ko'ra faqat kanal a'zolari mendan foydalana oladi siz esa hali kanalimga qo'shilmagansiz. Agar siz mendan foydalanmoqchi bo'lsangiz, kanalimga qo'shiling va meni qayta ishga tushiring!
 """
 
 HELP_TXT = """
-HELP SECTION 📝
+Yordam bo'limi 📝
 
-🛠️ /settings - Open settings to set your requirements.
+🛠️ /sozlamalar - Talablaringizni belgilash uchun sozlamalarni oching.
 
-🔒 /login - Login to your userbot session.
+🔒 /kirish - Botda o'zingiz akkauntingizga kirish.
 
-📦 /batch - Download bulk links in a systematic way.
+📦 /ommaviy - Ommaviy havolalarni to'plam tarzda yuklab oling.
 
-⛔ /cancel - Stop batch processing.
+⛔ /bekor - Jarayonni bekor qilish.
+
+ Savol va takliflar uchun: @jonathanfrky
 """
 
 HELP2_TXT = """
-🕵️ Help:
+🕵️ Yordam:
 
-FOR PUBLIC AND PRIVATE CHANNEL OR GROUP:
-- First, log in.
-- Then send the message link of any channel that you've joined in your login account.
+OMMAVIY va SHAXSIY kanaldan yuklab olish uchun:
+- Birinchi, akkauntingizga kiring.
+- Keyin ulangan istalgan kanlingizni linkni botga yuboring.
 
-FOR BOT:
-- Send the link in this format: https://t.me/b/bot_username/message_id (use Plus Messenger for message_id)
-
-FOR GROUP TOPIC:
-- (For Private Group) Group topic link is like: https://t.me/c/xxxxxxxxx/first_id/second_id
-But, send it like this: https://t.me/c/xxxxxxx/second_id (remove first id and one /)
-- (For Public Group) Follow the private link step but remove "/c" from the link. Ex - https://t.me/username/second_id
 
 #FAQ:
 
-- If the bot says "Have you joined the channel?" then just log in again to the bot and try.
+- Agar bot "Kanalga ulangansizmi?" desa shunchaki botga qayta /kirish buyrug'i orqali qayta kiring va qayta sinab ko'ring.
 
-- If your batch is stuck, then use /stop.
+- Agar to'plam ishlamasa, /bekor qilishni ishlating.
 """
 
 ADMIN_TXT = """
-ADMINS PANEL 🛠️
+ADMIN PANEL 🛠️
 
-➕ /add - Add user ID to the premium section.
+➕ /add - Premium bo'limga foydalanuvchi identifikatorini qo'shing.
 
-➖ /rem - Remove user ID from the premium section.
+➖ /rem - Premium bo'limdan foydalanuvchi identifikatorini olib tashlang.
 
-🔍 /check - Check if a user ID is in the premium section.
+🔍 /check - Premium bo'limda foydalanuvchi identifikatori mavjudligini tekshiring.
 
-📢 /broadcast - Broadcast a message without a forward tag.
+📢 /broadcast - Xabarni uzatish tegisiz uzating.
 
-📣 /announce - Broadcast a message with a forward tag.
+📣 /announce - Oldinga yorliqli xabarni uzating.
 
-📊 /stats - Check your bot's stats.
+📊 /stats - Botning statistikasi.
 """
 
 SETTINGS_TXT = """
-Welcome to the settings section. Here, you can choose button: caption or session and thumbnail.
+Sozlamalar bo'limiga xush kelibsiz. Bu yerda siz tugmani tanlashingiz mumkin: sarlavha yoki sessiya va eskiz.
 """
 
 CAPTI0NS_TXT = """
-Customize the bot's caption here to tailor it to your preferences and needs!
+Bu yerda bot sarlavhasini o‘zingizning xohishingiz va ehtiyojlaringizga moslashtirish uchun sozlang!
 """
 
 THUMBNAIL_TXT = """
-Customize the bot's thumbnail here to tailor it to your preferences and needs!
+Bu yerda botning eskizini o‘z xohishingiz va ehtiyojlaringizga moslashtirish uchun sozlang!
 """
 
 SESSION_TXT = """
-Customize the bot's session here to tailor it to your preferences and needs!
+O'zingizning xohishingiz va ehtiyojlaringizga moslashtirish uchun bu yerda bot seansini sozlang!
 """
 
 CHANNEL_TXT = """
-Customize the bot's channel here to tailor it to your preferences and needs!
+Bu yerda botning kanalini o‘z xohishingiz va ehtiyojlaringizga moslashtiring!
 """
