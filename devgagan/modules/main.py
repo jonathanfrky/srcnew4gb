@@ -197,7 +197,7 @@ async def batch_link(_, message):
             )
             await userbot.start()
         else:
-            await app.send_message(message.chat.id, "Login in bot first ...")
+            await app.send_message(message.chat.id, "Shaxsiy kanallardan yuklab olish uchun birinchi botga kirishingiz zarur.\nBuning uchun /kirish buyrug'ini yuboring va ketma-ketlikka amal qiling.")
             return
         try:
             for i in range(cs, cs + cl):
@@ -209,56 +209,56 @@ async def batch_link(_, message):
                         url = f"{result}/{i}"
                         link = get_link(url)
                         if 't.me/b/' in link or 't.me/c/' in link:
-                            msg = await app.send_message(message.chat.id, f"Processing link {url}...")
+                            msg = await app.send_message(message.chat.id, f"Linkni qayta ishlab bo'lmadi! Ehtimol post o'chirilgan: {url}")
                             await get_msg(userbot, user_id, msg.id, link, 0, message)
                             sleep_msg = await app.send_message(
                                 message.chat.id,
-                                "Sleeping for 5 seconds to avoid flood..."
+                                "Telegram cheklovlari sabab har bir post 5 sekund ketma-ketligida yuboriladi."
                             )
                             await asyncio.sleep(2)
                             await pin_msg.edit_text(
-                            f"Batch process started ⚡\n__Processing: {i - cs + 1}/{cl}__\n\n**__Powered by Team SPY__**",
+                            f"Ommaviy yuklab olish boshlandi ⚡\n__Qayta ishlanmoqda: {i - cs + 1}/{cl}__\n\n**__Powered by @jonathanfrky_**",
                             reply_markup=keyboard
                             )
                             await asyncio.sleep(10)
                             await sleep_msg.delete()
                     except Exception as e:
-                        print(f"Error processing link {url}: {e}")
+                        print(f"Ushbu linkni qayta ishlashda xatolik {url}: {e}")
                         continue
         finally:
             if userbot.is_connected:
                 await userbot.stop()
-        await app.send_message(message.chat.id, "Batch completed successfully! 🎉")
+        await app.send_message(message.chat.id, "Ommaviy yuklab olish muvaffaqqiyatli tugallandi! 🎉")
         await set_interval(user_id, interval_minutes=20)
         await pin_msg.edit_text(
-                        f"Batch completed for {cl} messages ⚡\n\n**__Powered by Team SPY__**",
+                        f"Ommaviy yuklab olish {cl}ta xabar bilan tugallandi ⚡\n\n**__Powered by @jonathanfrky__**",
                         reply_markup=keyboard
         )
     except FloodWait as fw:
         await app.send_message(
             message.chat.id,
-            f"Try again after {fw.x} seconds due to floodwait from Telegram."
+            f"Iltimos {fw.x} sekunddan keyin qayta urinib ko'ring. Telegram tomonidan cheklovlar!."
         )
     except Exception as e:
         await app.send_message(message.chat.id, f"Error: {str(e)}")
     finally:
         users_loop.pop(user_id, None)
-@app.on_message(filters.command("cancel"))
+@app.on_message(filters.command("bekor"))
 async def stop_batch(_, message):
     user_id = message.chat.id
     if user_id in users_loop and users_loop[user_id]:
         users_loop[user_id] = False
         await app.send_message(
             message.chat.id, 
-            "Batch processing has been stopped successfully. You can start a new batch now if you want."
+            "To'plamni qayta ishlash muvaffaqiyatli to'xtatildi. Agar xohlasangiz, hozir yangi to'plamni boshlashingiz mumkin."
         )
     elif user_id in users_loop and not users_loop[user_id]:
         await app.send_message(
             message.chat.id, 
-            "The batch process was already stopped. No active batch to cancel."
+            "To'plam jarayoni allaqachon to'xtatilgan. Bekor qilish uchun faol to‘plam yo‘q."
         )
     else:
         await app.send_message(
             message.chat.id, 
-            "No active batch processing is running to cancel."
+            "Bekor qilish uchun faol ommaviy fayllar yuklab olinmayapti."
     )
