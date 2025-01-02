@@ -12,7 +12,7 @@ from config import MONGO_DB, WEBSITE_URL, AD_API # you can edit this by any shor
 
 # MongoDB setup
 tclient = AsyncIOMotorClient(MONGO_DB)
-tdb = tclient["telegram_bot"]
+tdb = tclient["srcnew"]
 token = tdb["tokens"]
 
 # Create a TTL index for sessions collection
@@ -60,17 +60,17 @@ async def token_handler(client, message):
         join_button = InlineKeyboardButton("Administrator ⚡️", url="https://t.me/jonathanfrky")
         premium = InlineKeyboardButton("Musiqa kanal 🎶", url="https://t.me/joninmusic")  # Callback for Help button
         keyboard = InlineKeyboardMarkup([
-            [join_button],  # First button
-            [premium]   # Second button
+            [join_button,  # First button
+            premium]   # Second button
         ])
         # Send the message with the image and keyboard
         await message.reply_photo(
             photo=image_url,
             caption=(
-                "Salom {} 👋\n\n"
+                "Salom 👋\n"
                 "✳️ Men orqali siz uzatish cheklangan kanal/guruhlardan postlarni saqlab olishingiz mumkin. YT, INSTA, ... ijtimoiy platformalardan video/audio yuklab olishim mumkin\n"
                 "✳️ Ommaviy kanallar uchun shunchaki post linkini yuboring. Shaxsiy kanallar uchun, avval /kirish orqali botga kiring, keyin post havolasini yuboring. Yordam uchun /yordam buyrug'ini yuboring\n\n"
-                "> Ko'zdan kechirishni tavsiya beramiz /shartlar, & /yordam\n\n"
+                "> Diqqat ushbu botdagi barcha harakatlaringizga o'zingiz javob berasiz! Botni keyinchalik ishlatish mobaynida ushbu qoidaga rozi ekanligingizni bildirasiz! Boshlashdan avval /shartlar buyrug'ini yuborib tanishib chiqing!!!"
                  ),
             reply_markup=keyboard
         )
