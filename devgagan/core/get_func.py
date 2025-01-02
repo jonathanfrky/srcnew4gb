@@ -76,7 +76,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
         else:
             chat = msg_link.split("/")[-2]
         if chat in saved_channel_ids:
-            await app.edit_message_text(message.chat.id, edit_id, "Kechirasiz!  😎 Bu kanal himoyalangan 🔐 by **__Jonathan__**")
+            await app.edit_message_text(message.chat.id, edit_id, "Kechirasiz!\nUshbu kanal himoyalangan 🔐\n\nYa'ni siz ushbu kanaldan men orqali postlarni yuklab ololmaysiz admin tomonidan cheklovlar.")
             return
             
         file = ""
