@@ -20,16 +20,15 @@ async def chat_watcher_func(_, message):
         pass
 
 
-@app.on_message(filters.command("stats"))
+@app.on_message(filters.command("stats") & filters.user(OWNER_ID))
 async def stats(client, message):
     users = len(await get_users())
     premium = await premium_users()
     await message.reply_text(f"""
-**Total Stats of** {(await client.get_me()).mention} :
+**Botning umumiy statistikasi** {(await client.get_me()).mention} :
 
-**Total Users** : {users}
-**Premium Users** : {len(premium)}
+**Umumiy foydalanuvchilar** : {users}ta
+**Premium foydalanuvchilar** : {len(premium)}ta
 
-**__Powered by Team SPY__**
 """)
   
