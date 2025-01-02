@@ -29,7 +29,7 @@ async def check_interval(user_id, freecheck):
         else:
             del interval_set[user_id]
     return True, None
-async def set_interval(user_id, interval_minutes=5):
+async def set_interval(user_id, interval_minutes=1):
     now = datetime.now()
     interval_set[user_id] = now + timedelta(minutes=interval_minutes)
 @app.on_message(filters.regex(r'https?://(?:www\.)?t\.me/[^\s]+'))
