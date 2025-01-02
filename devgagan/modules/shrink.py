@@ -50,15 +50,15 @@ async def is_user_verified(user_id):
 
 @app.on_message(filters.command("start"))
 async def token_handler(client, message):
-    """Handle the /token command."""
+    """/token buyrug'ini boshqaring."""
     join = await subscribe(client, message)
     if join == 1:
         return
     user_id = message.chat.id
     if len(message.command) <= 1:
-        image_url = "https://i.postimg.cc/v8q8kGyz/startimg-1.jpg"
-        join_button = InlineKeyboardButton("Join Channel", url="https://t.me/team_spy_pro")
-        premium = InlineKeyboardButton("Get Premium", url="https://t.me/kingofpatal")  # Callback for Help button
+        image_url = "https://github.com/ae010108/app1/blob/main/ayw.jpg?raw=true"
+        join_button = InlineKeyboardButton("Administrator ⚡️", url="https://t.me/jonathanfrky")
+        premium = InlineKeyboardButton("Musiqa kanal 🎶", url="https://t.me/joninmusic")  # Callback for Help button
         keyboard = InlineKeyboardMarkup([
             [join_button],  # First button
             [premium]   # Second button
@@ -67,12 +67,11 @@ async def token_handler(client, message):
         await message.reply_photo(
             photo=image_url,
             caption=(
-                "Hi 👋 Welcome, Wanna intro...?\n\n"
-                "✳️ I can save posts from channels or groups where forwarding is off. I can download videos/audio from YT, INSTA, ... social platforms\n"
-                "✳️ Simply send the post link of a public channel. For private channels, do /login. Send /help to know more. \n\n"
-                "> Must check /terms, /plan & /help\n\n"
-                "> 👉 **__Note:__** Initiate /set to auto setup bot commands (owner only)"
-            ),
+                "Salom {} 👋\n\n"
+                "✳️ Men orqali siz uzatish cheklangan kanal/guruhlardan postlarni saqlab olishingiz mumkin. YT, INSTA, ... ijtimoiy platformalardan video/audio yuklab olishim mumkin\n"
+                "✳️ Ommaviy kanallar uchun shunchaki post linkini yuboring. Shaxsiy kanallar uchun, avval /kirish orqali botga kiring, keyin post havolasini yuboring. Yordam uchun /yordam buyrug'ini yuboring\n\n"
+                "> Ko'zdan kechirishni tavsiya beramiz /shartlar, & /yordam\n\n"
+                 ),
             reply_markup=keyboard
         )
         return  
@@ -80,7 +79,7 @@ async def token_handler(client, message):
     param = message.command[1] if len(message.command) > 1 else None
     freecheck = await chk_user(message, user_id)
     if freecheck != 1:
-        await message.reply("You are a premium user no need of token 😉")
+        await message.reply("Siz premium foydalanuvchisiz, token kerak emas 😉")
         return
 
     # Handle deep link with parameter
@@ -94,10 +93,10 @@ async def token_handler(client, message):
                 "expires_at": datetime.utcnow() + timedelta(hours=3),
             })
             del Param[user_id]  # Remove the parameter from Param
-            await message.reply("✅ You have been verified successfully! Enjoy your session for next 3 hours.")
+            await message.reply("✅ Siz muvaffaqiyatli tekshirildingiz! Keyingi 3 soat davomida seansingizdan rohatlaning.")
             return
         else:
-            await message.reply("❌ Invalid or expired verification link. Please generate a new token.")
+            await message.reply("❌ Tasdiqlash havolasi yaroqsiz yoki muddati o‘tgan. Iltimos, yangi token yarating.")
             return
 
 @app.on_message(filters.command("token"))
@@ -106,10 +105,10 @@ async def smart_handler(client, message):
     # Check if the user is already verified or premium
     freecheck = await chk_user(message, user_id)
     if freecheck != 1:
-        await message.reply("You are a premium user no need of token 😉")
+        await message.reply("Siz premium foydalanuvchisiz, token kerak emas 😉")
         return
     if await is_user_verified(user_id):
-        await message.reply("✅ Your free session is already active enjoy!")
+        await message.reply("✅ Bepul seansingiz allaqachon faol, zavqlaning!!")
     else:
         # Generate a session and send the link
         param = await generate_random_param()
@@ -121,11 +120,11 @@ async def smart_handler(client, message):
         # Get shortened URL
         shortened_url = await get_shortened_url(deep_link)
         if not shortened_url:
-            await message.reply("❌ Failed to generate the token link. Please try again.")
+            await message.reply("❌ Token havolasini yaratib bo‘lmadi. Iltimos, qayta urinib koʻring.")
             return
 
         # Create a button with the shortened link
         button = InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Verify the token now...", url=shortened_url)]]
+            [[InlineKeyboardButton("Tokenni hozir tasdiqlang...", url=shortened_url)]]
         )
-        await message.reply("Click the button below to verify your free access token: \n\n> What will you get ? \n1. No time bound upto 3 hours \n2. Batch command limit will be FreeLimit + 20 \n3. All functions unlocked", reply_markup=button)
+        await message.reply("Bepul kirish tokeningizni tasdiqlash uchun quyidagi tugmani bosing: \n\n> Sizga nima beriladi? \n1. 3 soatgacha vaqt cheklanmagan \n2. To'plamli buyruqlar chegarasi FreeLimit + 20 \n3 bo'ladi. Barcha funksiyalar qulfdan chiqarilgan", reply_markup=button)
