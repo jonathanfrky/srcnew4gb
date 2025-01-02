@@ -36,13 +36,13 @@ async def subscribe(app, message):
       try:
          user = await app.get_chat_member(update_channel, message.from_user.id)
          if user.status == "kicked":
-            await message.reply_text("You are Banned. Contact -- @devgaganin")
+            await message.reply_text("Siz banlangansiz. Contact -- @jonathanfrky")
             return 1
       except UserNotParticipant:
-         await message.reply_photo(photo="https://graph.org/file/d44f024a08ded19452152.jpg",caption=script.FORCE_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Now...", url=f"{url}")]]))
+         await message.reply_photo(photo="https://github.com/ae010108/app1/blob/main/d2e318fc92038c1ad26467e23b8991e6.jpg?raw=true",caption=script.FORCE_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Kanalga ulanish.", url=f"{url}")]]))
          return 1
       except Exception:
-         await message.reply_text("Something Went Wrong. Contact us @devgaganin...")
+         await message.reply_text("Nimadir xato ketdi. Aloqaga chiqing @jonathanfrky")
          return 1
 
 
@@ -85,10 +85,10 @@ async def get_seconds(time_string):
 
 
 PROGRESS_BAR = """\n
-│ **__Completed:__** {1}/{2}
-│ **__Bytes:__** {0}%
-│ **__Speed:__** {3}/s
-│ **__ETA:__** {4}
+│ **__Tugallandi:__** {1}/{2}
+│ **__Foizlarda:__** {0}%
+│ **__Tezlik:__** {3}/s
+│ **__Qolgan vaqt:__** {4}
 ╰─────────────────────╯
 """
 
@@ -143,11 +143,11 @@ def TimeFormatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + "d, ") if days else "") + \
-        ((str(hours) + "h, ") if hours else "") + \
-        ((str(minutes) + "m, ") if minutes else "") + \
-        ((str(seconds) + "s, ") if seconds else "") + \
-        ((str(milliseconds) + "ms, ") if milliseconds else "")
+    tmp = ((str(days) + "kun, ") if days else "") + \
+        ((str(hours) + "soat, ") if hours else "") + \
+        ((str(minutes) + "minut, ") if minutes else "") + \
+        ((str(seconds) + "sekund, ") if seconds else "") + \
+        ((str(milliseconds) + "millisekund, ") if milliseconds else "")
     return tmp[:-2] 
 
 
@@ -166,16 +166,16 @@ def convert(seconds):
 async def userbot_join(userbot, invite_link):
     try:
         await userbot.join_chat(invite_link)
-        return "Successfully joined the Channel"
+        return "Kanalga muvaffaqiyatli qo'shildi"
     except UserAlreadyParticipant:
-        return "User is already a participant."
+        return "Foydalanuvchi allaqachon ishtirokchi."
     except (InviteHashInvalid, InviteHashExpired):
-        return "Could not join. Maybe your link is expired or Invalid."
+        return "Qo‘shilib bo‘lmadi. Ehtimol, havolangiz muddati tugagan yoki yaroqsiz."
     except FloodWait:
-        return "Too many requests, try again later."
+        return "Soʻrovlar juda koʻp, keyinroq qayta urinib koʻring."
     except Exception as e:
         print(e)
-        return "Could not join, try joining manually."
+        return "Qo‘shilib bo‘lmadi, qo‘lda qo‘shiling."
     
 
 
@@ -271,13 +271,13 @@ async def progress_callback(current, total, progress_message):
         # Format message with MB and percentage
         await progress_message.edit(
     f"╭──────────────────╮\n"
-    f"│        **__Uploading...__**       \n"
+    f"│        **__Yuborilmoqda...__**       \n"
     f"├──────────\n"
     f"│ {progress_bar}\n\n"
-    f"│ **__Progress:__** {percent:.2f}%\n"
-    f"│ **__Uploaded:__** {current_mb:.2f} MB / {total_mb:.2f} MB\n"
+    f"│ **__Jarayon:__** {percent:.2f}%\n"
+    f"│ **__Yuborildi:__** {current_mb:.2f} MB / {total_mb:.2f} MB\n"
     f"╰──────────────────╯\n\n"
-    f"**__Powered by Team SPY__**"
+    f"**__Powered by @jonathanfrky__**"
         )
         
         last_update_time = current_time
