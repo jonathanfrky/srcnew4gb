@@ -39,7 +39,7 @@ async def auto_ping():
 
 # MongoDB setup
 tclient = AsyncIOMotorClient(MONGO_DB)
-tdb = tclient["telegram_bot"]  # Your database
+tdb = tclient["srcnew"]  # Your database
 token = tdb["tokens"]  # Your tokens collection
 
 async def create_ttl_index():
