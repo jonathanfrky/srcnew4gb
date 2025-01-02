@@ -17,30 +17,28 @@ async def set(_, message):
         return
     # Setting all the bot commands
     await app.set_bot_commands([
-        BotCommand("start", "🚀 Start the bot"),
-        BotCommand("ommaviy", "🫠 Extract in bulk"),
-        BotCommand("kirish", "🔑 Get into the bot"),
-        BotCommand("chiqish", "🚪 Get out of the bot"),
-        BotCommand("token", "🎲 Get 3 hours free access"),
-        BotCommand("adl", "👻 Download audio from 30+ sites"),
-        BotCommand("dl", "💀 Download videos from 30+ sites"),
-        BotCommand("sovga", "💘 Gift premium to others"),
-        BotCommand("rejam", "⌛ Get your plan details"),
-        BotCommand("add", "➕ Add user to premium"),
-        BotCommand("rem", "➖ Remove from premium"),
-        BotCommand("sozlama", "⚙️ Personalize things"),
-        BotCommand("stats", "📊 Get stats of the bot"),
-        BotCommand("rejalar", "🗓️ Check our premium plans"),
-        BotCommand("shartlar", "🥺 Terms and conditions"),
-        BotCommand("speedtest", "🚅 Speed of server"),
-        BotCommand("get", "🗄️ Get all user IDs"),
-        BotCommand("qulflash", "🔒 Protect channel from extraction"),
-        BotCommand("broadcast", "⚡ Broadcast message to bot users"),
-        BotCommand("yordam", "❓ If you're a noob, still!"),
-        BotCommand("bekor", "🚫 Cancel batch process")
+        BotCommand("start", "🚀 Botni ishga tushirish"),
+        BotCommand("kirish", "🔑 Akkauntingizga kirish"),
+        BotCommand("chiqish", "🚪 Akkauntingizdan chiqish"),
+        BotCommand("token", "🎲 3 soat cheklovsiz foydalanish"),
+        BotCommand("ommaviy", "🫠 Ommaviy yuklab olish"),
+        #BotCommand("adl", "👻 Download audio from 30+ sites"),
+        #BotCommand("dl", "💀 Download videos from 30+ sites"),
+        BotCommand("sovga", "💘 Premium sovg'a qilish"),
+        BotCommand("rejam", "⌛ Ta'rifingiz haqida ma'lumot"),
+        BotCommand("sozlamalar", "⚙️ Sozmalar sahifasi"),
+        BotCommand("stats", "📊 Bot statistikasi"),
+        BotCommand("rejalar", "🗓️ Premium rejalar haqida"),
+        BotCommand("shartlar", "🥺 Foydalanish shartlari"),
+        BotCommand("speedtest", "🚅 Server tezligini o'lchash"),
+        BotCommand("get", "🗄️ Barcha foydalanuvchilar IDsini olish"),
+        BotCommand("qulflash", "🔒 Kanalingizni saqlab olishdan himoyalash"),
+        BotCommand("broadcast", "⚡ Foydalanuvchilarga xabar yuborish"),
+        BotCommand("yordam", "❓ Yordam kerak bo'lsa!"),
+        BotCommand("bekor", "🚫 Jarayonni bekor qilish")
     ])
     
-    await message.reply("✅ Commands configured successfully!")
+    await message.reply("✅ Buyruqlar muvaffaqqiyatli o'zgartiirildi!")
 
 # Function to split and manage the help message in multiple parts
 
@@ -92,7 +90,7 @@ help_pages = [
         "> 4. REPLACEWORDS : Can be used for words in deleted set via REMOVE WORDS\n"
         "> 5. RESET : To set the things back to default\n\n"
         "> You can set CUSTOM THUMBNAIL, PDF WATERMARK, VIDEO WATERMARK, SESSION-based login, etc. from settings\n\n"
-        "**__Powered by Team SPY__**"
+        "**__Powered by @jonathanfrky__**"
     )
 ]
 
@@ -166,7 +164,7 @@ async def terms(client, message):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📋 Ta'riflar ko'rish", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Bog'lanish", url="https://t.me/jonathanfrky")],
         ]
     )
     await message.reply_text(terms_text, reply_markup=buttons)
@@ -185,7 +183,7 @@ async def plan(client, message):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
         ]
     )
     await message.reply_text(plan_text, reply_markup=buttons)
@@ -204,7 +202,7 @@ async def see_plan(client, callback_query):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📜 See Terms", callback_data="see_terms")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
         ]
     )
     await callback_query.message.edit_text(plan_text, reply_markup=buttons)
@@ -222,7 +220,7 @@ async def see_terms(client, callback_query):
     buttons = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton("📋 See Plans", callback_data="see_plan")],
-            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/kingofpatal")],
+            [InlineKeyboardButton("💬 Contact Now", url="https://t.me/jonathanfrky")],
         ]
     )
     await callback_query.message.edit_text(terms_text, reply_markup=buttons)
