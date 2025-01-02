@@ -66,7 +66,7 @@ async def speedtest(event):
 ├ <b>Sponsor:</b> <code>{result['server']['sponsor']}</code>
 ├ <b>Kechikish:</b> <code>{result['server']['latency']}</code>
 ├ <b>Kenglik:</b> <code>{result['server']['lat']}</code>
-╰ <b>Longitude:</b> <code>{result['server']['lon']}</code>
+╰ <b>Uzunlik:</b> <code>{result['server']['lon']}</code>
 ╭─《 👤 MIJOZ MA'LUMOTLARI 》
 ├ <b>IP Address:</b> <code>{result['client']['ip']}</code>
 ├ <b>Kenglik:</b> <code>{result['client']['lat']}</code>
