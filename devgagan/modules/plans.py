@@ -100,11 +100,11 @@ async def give_premium_cmd_handler(client, message):
             await plans_db.add_premium(user_id, expiry_time)  
             data = await plans_db.check_premium(user_id)
             expiry = data.get("expire_date")   
-            expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Tashkent")).strftime("%d-%m-%Y\n⏱️ ᴇxᴘɪʀʏ ᴛɪᴍᴇ : %I:%M:%S %p")         
-            await message.reply_text(f"Premiumga muvaffaqqiyatli qo'shildi ✅\n\n👤 Foydalanuvchi : {user.mention}\n⚡ User ID : <code>{user_id}</code>\n⏰ Premium ruxsat : <code>{time}</code>\n\n⏳ Ulnaish vaqti : {current_time}\n\n⌛️ Tugash vaqt : {expiry_str_in_ist}\n\n__**Powered by @jonathanfrky__**", disable_web_page_preview=True)
+            expiry_str_in_ist = expiry.astimezone(pytz.timezone("Asia/Tashkent")).strftime("%d-%m-%Y\n⏱️ Tugasg vaqt : %I:%M:%S %p")         
+            await message.reply_text(f"Premiumga muvaffaqqiyatli qo'shildi ✅\n\n👤 Foydalanuvchi : {user.mention}\n⚡ User ID : <code>{user_id}</code>\n⏰ Premium muddati : <code>{time}</code>\n\n⏳ Ulanish sanasi : {current_time}\n\n⌛️ Tugash vaqt : {expiry_str_in_ist}\n\n__**Powered by @jonathanfrky__**", disable_web_page_preview=True)
             await client.send_message(
                 chat_id=user_id,
-                text=f"👋 Hey {user.mention},\nSiz premiumga ega bo'ldingiz.\nMaza qiling !! ✨🎉\n\n⏰ Premium ruxsati: <code>{time}</code>\n⏳ Ulangan vaqtingiz : {current_time}\n\n⌛️ Tugash vaqti : {expiry_str_in_ist}", disable_web_page_preview=True              
+                text=f"👋 Hey {user.mention},\nSiz premiumga ega bo'ldingiz.\nMaza qiling !! ✨🎉\n\n⏰ Premium muddati: <code>{time}</code>\n⏳ Ulangan sanangiz : {current_time}\n\n⌛️ Tugash vaqti : {expiry_str_in_ist}", disable_web_page_preview=True              
             )    
 #            await client.send_message(PREMIUM_LOGS, text=f"#Added_Premium\n\n👤 ᴜꜱᴇʀ : {user.mention}\n⚡ ᴜꜱᴇʀ ɪᴅ : <code>{user_id}</code>\n⏰ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴇꜱꜱ : <code>{time}</code>\n\n⏳ ᴊᴏɪɴɪɴɢ ᴅᴀᴛᴇ : {current_time}\n\n⌛️ ᴇxᴘɪʀʏ ᴅᴀᴛᴇ : {expiry_str_in_ist}", disable_web_page_preview=True)
                     
